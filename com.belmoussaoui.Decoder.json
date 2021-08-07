@@ -7,9 +7,9 @@
   "command": "decoder",
   "finish-args": [
     "--share=ipc",
-    "--socket=x11",
-    "--socket=pulseaudio",
-    "--device=all",
+    "--socket=fallback-x11",
+    "--socket=wayland",
+    "--device=dri",
     "--talk-name=org.a11y.Bus",
     "--env=GST_PLUGIN_SYSTEM_PATH=/app/lib/gstreamer-1.0"
   ],
@@ -34,22 +34,51 @@
   ],
   "modules": [
     {
-      "name": "libhandy",
-      "buildsystem": "meson",
-      "config-opts": [
+      "name" : "libadwaita",
+      "buildsystem" : "meson",
+      "config-opts" : [
         "-Dintrospection=disabled",
         "-Dgtk_doc=false",
         "-Dtests=false",
         "-Dexamples=false",
-        "-Dvapi=false",
-        "-Dglade_catalog=disabled"
+        "-Dvapi=false"
       ],
-      "sources": [
+      "cleanup" : [
+        "/include",
+        "/lib/pkgconfig"
+      ],
+      "sources" : [
         {
-          "type": "git",
-          "url": "https://gitlab.gnome.org/exalm/libhandy.git",
-          "branch": "gtk4",
-          "commit": "6fda458737d9d999e232edceb22d49bc31efea95"
+          "type" : "git",
+          "url" : "https://gitlab.gnome.org/GNOME/libadwaita.git",
+          "branch" : "main",
+          "commit" : "194248095e2881e2056829fbc165e501f9777db1"
+        }
+      ],
+      "modules" : [
+        {
+          "name" : "libsass",
+          "buildsystem" : "meson",
+          "sources" : [
+            {
+              "type" : "git",
+              "url" : "https://github.com/lazka/libsass.git",
+              "branch" : "meson",
+              "commit" : "302397c0c8ae2d7ab02f45ea461c2c3d768f248e"
+            }
+          ]
+        },
+        {
+          "name" : "sassc",
+          "buildsystem" : "meson",
+          "sources" : [
+            {
+              "type" : "git",
+              "url" : "https://github.com/lazka/sassc.git",
+              "branch" : "meson",
+              "commit" : "82803377c33247265d779af034eceb5949e78354"
+            }
+          ]
         }
       ]
     },
@@ -57,26 +86,31 @@
       "name": "zbar",
       "config-opts": [
         "--without-qt",
+        "--without-qt5",
         "--without-gtk",
         "--without-xv",
         "--without-imagemagick",
+        "--without-dbus",
         "--disable-video",
         "--without-java",
         "--without-python",
         "--with-doc=no",
+        "--disable-doc",
         "--with-introspection=no",
         "--enable-codes=qrcode"
       ],
       "sources": [
         {
-          "type": "git",
-          "url": "git://git.linuxtv.org/zbar.git",
-          "tag": "0.20"
+          "type": "archive",
+          "url": "https://linuxtv.org/downloads/zbar/zbar-0.23.tar.gz",
+          "sha256": "ac52763a7dd6ddc53ca6cd75ccee14f7abf6ae46ecb31137d025af123edd33bf"
         },
         {
           "type": "script",
           "dest-filename": "autogen.sh",
-          "commands": ["autoreconf -vfi -W none"]
+          "commands": [
+            "autoreconf -vfi -W none"
+          ]
         }
       ]
     },
@@ -90,9 +124,9 @@
       ],
       "sources": [
         {
-          "type": "git",
-          "url": "https://gitlab.freedesktop.org/gstreamer/gstreamer.git",
-          "commit": "16178d46c87517b79a7be72f538fd726fbdb888f"
+          "type": "archive",
+          "url": "https://gitlab.freedesktop.org/gstreamer/gstreamer/-/archive/1.18.4/gstreamer-1.18.4.tar.gz",
+          "sha256": "f0956c2056281f5909d030945a9896810e55084f29b6bcfc401b53e91ddf1c7f"
         }
       ]
     },
@@ -108,9 +142,9 @@
       ],
       "sources": [
         {
-          "type": "git",
-          "url": "https://gitlab.freedesktop.org/gstreamer/gst-plugins-base.git",
-          "commit": "0fdc1ca818a4d03e187b2467cf23fa4196ccb94d"
+          "type": "archive",
+          "url": "https://gitlab.freedesktop.org/gstreamer/gst-plugins-base/-/archive/1.18.4/gst-plugins-base-1.18.4.tar.gz",
+          "sha256": "7ade65d9a9c88a346954aeea3133ffba89d90da7534895f1a960b26fa496d4ca"
         }
       ]
     },
@@ -127,13 +161,9 @@
       ],
       "sources": [
         {
-          "type": "git",
-          "url": "https://gitlab.freedesktop.org/gstreamer/gst-plugins-good.git",
-          "commit": "d432ca10df4f5f311449e5433cd815770923cd4e"
-        },
-        {
-          "type": "patch",
-          "path": "gstgtkglarea.patch"
+          "type": "archive",
+          "url": "https://gitlab.freedesktop.org/gstreamer/gst-plugins-good/-/archive/1.18.4/gst-plugins-good-1.18.4.tar.gz",
+          "sha256": "66dc8eeb06070f1b0135c36110c91655ae34499f8172b36dae3c6499e52e302e"
         }
       ]
     },
@@ -150,10 +180,33 @@
       ],
       "sources": [
         {
-          "type": "git",
-          "url": "https://gitlab.freedesktop.org/gstreamer/gst-plugins-bad.git",
-          "commit": "a35760806abf4196c6b1b58ff808ba6302c7fd61"
+          "type": "archive",
+          "url": "https://gitlab.freedesktop.org/gstreamer/gst-plugins-bad/-/archive/1.18.4/gst-plugins-bad-1.18.4.tar.gz",
+          "sha256": "30178ddcabcf71faccca8808f402a6e02394dfe3f821e2abe7a1b397f01eeaed"
         }
+      ]
+    },
+    {
+      "name": "pipewire",
+      "buildsystem": "meson",
+      "config-opts": [
+        "-Ddocs=disabled",
+        "-Dman=disabled",
+        "-Dsystemd=disabled",
+        "-Dudev=disabled",
+        "-Dudevrulesdir=/app/lib/udev/rules.d"
+      ],
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://github.com/PipeWire/pipewire/archive/0.3.33.tar.gz",
+          "sha256": "f60662be410523cbb767dbee81156f9e9e3bd2b06d0ea21e94c11eb7a6530bcc"
+        }
+      ],
+      "cleanup": [
+        "/bin",
+        "/etc",
+        "/include"
       ]
     },
     {
@@ -162,8 +215,8 @@
       "sources": [
         {
           "type": "archive",
-          "url": "https://gitlab.gnome.org/World/decoder/uploads/8090c1098277a965a5b1b7bf721010bb/decoder-0.1.0.tar.xz",
-          "sha256": "b9caacb07c447926cf9a306687f562a7400cedccb12097b51bef157eea776b4b"
+          "url": "https://gitlab.gnome.org/World/decoder/uploads/8572d163f13a80e744d9c14a97ede9fa/decoder-0.2.0.tar.xz",
+          "sha256": "b76c0d17843df454788c30be0fed5ede9a025a2f436243ebe6989bdeedddb472"
         }
       ]
     }
