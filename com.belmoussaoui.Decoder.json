@@ -11,6 +11,7 @@
     "--socket=wayland",
     "--device=dri",
     "--talk-name=org.a11y.Bus",
+    "--filesystem=xdg-run/pipewire-0",
     "--env=GST_PLUGIN_SYSTEM_PATH=/app/lib/gstreamer-1.0"
   ],
   "build-options": {
@@ -215,8 +216,8 @@
       "sources": [
         {
           "type": "archive",
-          "url": "https://gitlab.gnome.org/World/decoder/uploads/8572d163f13a80e744d9c14a97ede9fa/decoder-0.2.0.tar.xz",
-          "sha256": "b76c0d17843df454788c30be0fed5ede9a025a2f436243ebe6989bdeedddb472"
+          "url": "https://gitlab.gnome.org/World/decoder/uploads/2b63c0cca245d7db86635c3eb5a53ff8/decoder-0.2.1.tar.xz",
+          "sha256": "03623e17e160c4fe546046c6fbbca42fa4c7875f947c6870fc07860d0e367924"
         }
       ]
     }
