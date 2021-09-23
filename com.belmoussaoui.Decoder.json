@@ -1,9 +1,12 @@
 {
   "app-id": "com.belmoussaoui.Decoder",
   "runtime": "org.gnome.Platform",
-  "runtime-version": "40",
+  "runtime-version": "41",
   "sdk": "org.gnome.Sdk",
-  "sdk-extensions": ["org.freedesktop.Sdk.Extension.rust-stable"],
+  "sdk-extensions" : [
+    "org.freedesktop.Sdk.Extension.rust-stable",
+    "org.freedesktop.Sdk.Extension.llvm12"
+  ],
   "command": "decoder",
   "finish-args": [
     "--share=ipc",
@@ -11,8 +14,7 @@
     "--socket=wayland",
     "--device=dri",
     "--talk-name=org.a11y.Bus",
-    "--filesystem=xdg-run/pipewire-0",
-    "--env=GST_PLUGIN_SYSTEM_PATH=/app/lib/gstreamer-1.0"
+    "--filesystem=xdg-run/pipewire-0"
   ],
   "build-options": {
     "append-path": "/usr/lib/sdk/rust-stable/bin"
@@ -58,7 +60,6 @@
             {
               "type" : "git",
               "url" : "https://github.com/lazka/libsass.git",
-              "branch" : "meson",
               "commit" : "302397c0c8ae2d7ab02f45ea461c2c3d768f248e"
             }
           ]
@@ -70,7 +71,6 @@
             {
               "type" : "git",
               "url" : "https://github.com/lazka/sassc.git",
-              "branch" : "meson",
               "commit" : "82803377c33247265d779af034eceb5949e78354"
             }
           ]
@@ -110,59 +110,6 @@
       ]
     },
     {
-      "name": "gstreamer",
-      "buildsystem": "meson",
-      "config-opts": [
-        "-Dexamples=disabled",
-        "-Dtests=disabled",
-        "-Ddoc=disabled"
-      ],
-      "sources": [
-        {
-          "type": "archive",
-          "url": "https://gitlab.freedesktop.org/gstreamer/gstreamer/-/archive/1.18.4/gstreamer-1.18.4.tar.gz",
-          "sha256": "f0956c2056281f5909d030945a9896810e55084f29b6bcfc401b53e91ddf1c7f"
-        }
-      ]
-    },
-    {
-      "name": "gst-plugins-base",
-      "buildsystem": "meson",
-      "config-opts": [
-        "-Ddoc=disabled",
-        "-Dexamples=disabled",
-        "-Dtests=disabled",
-        "-Dorc=enabled",
-        "--wrap-mode=nodownload"
-      ],
-      "sources": [
-        {
-          "type": "archive",
-          "url": "https://gitlab.freedesktop.org/gstreamer/gst-plugins-base/-/archive/1.18.4/gst-plugins-base-1.18.4.tar.gz",
-          "sha256": "7ade65d9a9c88a346954aeea3133ffba89d90da7534895f1a960b26fa496d4ca"
-        }
-      ]
-    },
-    {
-      "name": "gst-plugins-good",
-      "buildsystem": "meson",
-      "config-opts": [
-        "-Dgtk3=disabled",
-        "-Dgtk4=enabled",
-        "-Dgtk4-experiments=true",
-        "-Ddoc=disabled",
-        "-Dexamples=disabled",
-        "-Dtests=disabled"
-      ],
-      "sources": [
-        {
-          "type": "archive",
-          "url": "https://gitlab.freedesktop.org/gstreamer/gst-plugins-good/-/archive/1.18.4/gst-plugins-good-1.18.4.tar.gz",
-          "sha256": "66dc8eeb06070f1b0135c36110c91655ae34499f8172b36dae3c6499e52e302e"
-        }
-      ]
-    },
-    {
       "name": "gst-bad-plugins",
       "buildsystem": "meson",
       "config-opts": [
@@ -176,37 +123,18 @@
       "sources": [
         {
           "type": "archive",
-          "url": "https://gitlab.freedesktop.org/gstreamer/gst-plugins-bad/-/archive/1.18.4/gst-plugins-bad-1.18.4.tar.gz",
-          "sha256": "30178ddcabcf71faccca8808f402a6e02394dfe3f821e2abe7a1b397f01eeaed"
+          "url": "https://gitlab.freedesktop.org/gstreamer/gst-plugins-bad/-/archive/1.18.5/gst-plugins-bad-1.18.5.tar.gz",
+          "sha256": "67c99a54dfc326bdcf2707973e5ad2c80c2e906406c5db7ec7dacbb252e739c6"
         }
-      ]
-    },
-    {
-      "name": "pipewire",
-      "buildsystem": "meson",
-      "config-opts": [
-        "-Ddocs=disabled",
-        "-Dman=disabled",
-        "-Dsystemd=disabled",
-        "-Dudev=disabled",
-        "-Dudevrulesdir=/app/lib/udev/rules.d"
-      ],
-      "sources": [
-        {
-          "type": "archive",
-          "url": "https://github.com/PipeWire/pipewire/archive/refs/tags/0.3.32.tar.gz",
-          "sha256": "8b2af6138529fd9214dd148f2a6304f13c16e0b0d3a4a98c1afa87b7e65c574f"
-        }
-      ],
-      "cleanup": [
-        "/bin",
-        "/etc",
-        "/include"
       ]
     },
     {
       "name": "decoder",
       "buildsystem": "meson",
+      "build-options": {
+        "prepend-path": "/usr/lib/sdk/llvm12/bin",
+        "prepend-ld-library-path": "/usr/lib/sdk/llvm12/lib"
+      },
       "sources": [
         {
           "type": "archive",
