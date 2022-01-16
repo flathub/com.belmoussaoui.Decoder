@@ -1,0 +1,24 @@
+From 2902a0d392b60e873e2fc9c2425e3e402de46454 Mon Sep 17 00:00:00 2001
+From: Maximiliano Sandoval R <msandova@gnome.org>
+Date: Sun, 16 Jan 2022 21:16:12 +0100
+Subject: [PATCH] Fix valign on listbox
+
+---
+ data/resources/ui/history_page.ui | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/data/resources/ui/history_page.ui b/data/resources/ui/history_page.ui
+index e8eddcd..7d9817b 100644
+--- a/data/resources/ui/history_page.ui
++++ b/data/resources/ui/history_page.ui
+@@ -30,7 +30,7 @@
+                   <object class="AdwClamp">
+                     <child>
+                       <object class="GtkListBox" id="listbox">
+-                        <property name="halign">start</property>
++                        <property name="valign">start</property>
+                         <signal name="row-activated" handler="on_row_activated"/>
+                         <style>
+                           <class name="content" />
+-- 
+GitLab

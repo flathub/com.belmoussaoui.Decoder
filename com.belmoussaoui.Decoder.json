@@ -163,6 +163,10 @@
           "type": "archive",
           "url": "https://gitlab.gnome.org/World/decoder/uploads/40a9d613280cd8792d3e3cba35defc78/decoder-0.2.2.tar.xz",
           "sha256": "aae6d271a15717326e4bd4d9c453f4cbf34654ca8e9b4035d585faf48de3cbd9"
+        },
+        {
+          "type": "patch",
+          "path": "align.patch"
         }
       ]
     }
