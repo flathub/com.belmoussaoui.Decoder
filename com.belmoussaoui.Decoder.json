@@ -81,6 +81,47 @@
       ]
     },
     {
+      "name" : "libsass",
+      "buildsystem" : "meson",
+      "cleanup": ["*"],
+      "sources" : [
+        {
+        "type" : "git",
+        "url" : "https://github.com/lazka/libsass.git",
+        "commit": "302397c0c8ae2d7ab02f45ea461c2c3d768f248e"
+      }
+      ]
+    },
+    {
+      "name" : "sassc",
+      "buildsystem" : "meson",
+      "cleanup": ["*"],
+      "sources" : [
+        {
+        "type" : "git",
+        "url" : "https://github.com/lazka/sassc.git",
+        "commit": "82803377c33247265d779af034eceb5949e78354"
+      }
+      ]
+    },
+    {
+      "name": "libadwaita",
+      "buildsystem": "meson",
+      "config-opts" : [
+        "-Dtests=false",
+        "-Dexamples=false",
+        "-Dintrospection=disabled",
+        "-Dvapi=false"
+      ],
+      "sources": [
+        {
+        "type": "git",
+        "url": "https://gitlab.gnome.org/GNOME/libadwaita",
+        "commit": "7a070faf7b1548cefcb034766cbfb337fce32a6d"
+      }
+      ]
+    },
+    {
       "name": "decoder",
       "buildsystem": "meson",
       "build-options": {
@@ -90,12 +131,8 @@
       "sources": [
         {
           "type": "archive",
-          "url": "https://gitlab.gnome.org/World/decoder/uploads/40a9d613280cd8792d3e3cba35defc78/decoder-0.2.2.tar.xz",
-          "sha256": "aae6d271a15717326e4bd4d9c453f4cbf34654ca8e9b4035d585faf48de3cbd9"
-        },
-        {
-          "type": "patch",
-          "path": "align.patch"
+          "url": "https://gitlab.gnome.org/World/decoder/uploads/876b5967192193d391a560a62885855b/decoder-0.3.0.tar.xz",
+          "sha256": "da313edf6487f0940073b0fd528a709a38a472ab43246c25183c82d1b6d94240"
         }
       ]
     }
