@@ -131,8 +131,8 @@
       "sources": [
         {
           "type": "archive",
-          "url": "https://gitlab.gnome.org/World/decoder/uploads/876b5967192193d391a560a62885855b/decoder-0.3.0.tar.xz",
-          "sha256": "da313edf6487f0940073b0fd528a709a38a472ab43246c25183c82d1b6d94240"
+          "url": "https://gitlab.gnome.org/World/decoder/uploads/757cc691f8ff316af1c949a696c9a531/decoder-0.3.1.tar.xz",
+          "sha256": "6d896a32786d22a433f1fc9663dc074970288e8f11d00490ca3b78cfa2e5f293"
         }
       ]
     }
