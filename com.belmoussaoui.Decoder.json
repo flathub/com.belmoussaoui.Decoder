@@ -1,11 +1,11 @@
 {
   "app-id": "com.belmoussaoui.Decoder",
   "runtime": "org.gnome.Platform",
-  "runtime-version": "42",
+  "runtime-version": "43",
   "sdk": "org.gnome.Sdk",
   "sdk-extensions" : [
     "org.freedesktop.Sdk.Extension.rust-stable",
-    "org.freedesktop.Sdk.Extension.llvm12"
+    "org.freedesktop.Sdk.Extension.llvm14"
   ],
   "command": "decoder",
   "finish-args": [
@@ -81,52 +81,11 @@
       ]
     },
     {
-      "name" : "libsass",
-      "buildsystem" : "meson",
-      "cleanup": ["*"],
-      "sources" : [
-        {
-        "type" : "git",
-        "url" : "https://github.com/lazka/libsass.git",
-        "commit": "302397c0c8ae2d7ab02f45ea461c2c3d768f248e"
-      }
-      ]
-    },
-    {
-      "name" : "sassc",
-      "buildsystem" : "meson",
-      "cleanup": ["*"],
-      "sources" : [
-        {
-        "type" : "git",
-        "url" : "https://github.com/lazka/sassc.git",
-        "commit": "82803377c33247265d779af034eceb5949e78354"
-      }
-      ]
-    },
-    {
-      "name": "libadwaita",
-      "buildsystem": "meson",
-      "config-opts" : [
-        "-Dtests=false",
-        "-Dexamples=false",
-        "-Dintrospection=disabled",
-        "-Dvapi=false"
-      ],
-      "sources": [
-        {
-        "type": "git",
-        "url": "https://gitlab.gnome.org/GNOME/libadwaita",
-        "commit": "7a070faf7b1548cefcb034766cbfb337fce32a6d"
-      }
-      ]
-    },
-    {
       "name": "decoder",
       "buildsystem": "meson",
       "build-options": {
-        "prepend-path": "/usr/lib/sdk/llvm12/bin",
-        "prepend-ld-library-path": "/usr/lib/sdk/llvm12/lib"
+        "prepend-path": "/usr/lib/sdk/llvm14/bin",
+        "prepend-ld-library-path": "/usr/lib/sdk/llvm14/lib"
       },
       "sources": [
         {
