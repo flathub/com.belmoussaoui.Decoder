@@ -1,5 +1,5 @@
 {
-  "app-id": "com.belmoussaoui.Decoder",
+  "id": "com.belmoussaoui.Decoder",
   "runtime": "org.gnome.Platform",
   "runtime-version": "43",
   "sdk": "org.gnome.Sdk",
