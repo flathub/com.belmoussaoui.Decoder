@@ -90,8 +90,8 @@
       "sources": [
         {
           "type": "archive",
-          "url": "https://gitlab.gnome.org/World/decoder/uploads/757cc691f8ff316af1c949a696c9a531/decoder-0.3.1.tar.xz",
-          "sha256": "6d896a32786d22a433f1fc9663dc074970288e8f11d00490ca3b78cfa2e5f293"
+          "url": "https://gitlab.gnome.org/World/decoder/uploads/49e5857b88a2fba7ebf55d606d97e2e2/decoder-0.3.2.tar.xz",
+          "sha256": "5a5d4b24193b3641f88750d144a35654bfb263f60c9d902ab34dc82ddd5c869b"
         }
       ]
     }
