@@ -1,7 +1,7 @@
 {
   "id": "com.belmoussaoui.Decoder",
   "runtime": "org.gnome.Platform",
-  "runtime-version": "43",
+  "runtime-version": "44",
   "sdk": "org.gnome.Sdk",
   "sdk-extensions" : [
     "org.freedesktop.Sdk.Extension.rust-stable",
@@ -32,25 +32,29 @@
     {
       "name": "zbar",
       "config-opts": [
+        "--disable-doc",
+        "--disable-video",
+        "--enable-codes=qrcode",
+        "--without-dbus",
+        "--without-directshow",
+        "--without-gir",
+        "--without-graphicsmagick",
+        "--without-gtk",
+        "--without-imagemagick",
+        "--without-java",
+        "--without-jpeg",
+        "--without-npapi",
+        "--without-python",
         "--without-qt",
         "--without-qt5",
-        "--without-gtk",
-        "--without-xv",
-        "--without-imagemagick",
-        "--without-dbus",
-        "--disable-video",
-        "--without-java",
-        "--without-python",
-        "--with-doc=no",
-        "--disable-doc",
-        "--with-introspection=no",
-        "--enable-codes=qrcode"
+        "--without-xshm",
+        "--without-xv"
       ],
       "sources": [
         {
           "type": "archive",
-          "url": "https://linuxtv.org/downloads/zbar/zbar-0.23.tar.gz",
-          "sha256": "ac52763a7dd6ddc53ca6cd75ccee14f7abf6ae46ecb31137d025af123edd33bf"
+          "url": "https://linuxtv.org/downloads/zbar/zbar-0.23.1.tar.gz",
+          "sha256": "c72b19eb63f48781ae5ff1830236f4e753f4bd6418cd781aea1cd85d625b119e"
         },
         {
           "type": "script",
@@ -64,6 +68,7 @@
     {
       "name": "gst-bad-plugins",
       "buildsystem": "meson",
+      "subdir": "subprojects/gst-plugins-bad",
       "config-opts": [
         "-Dzbar=enabled",
         "-Drsvg=disabled",
@@ -75,8 +80,8 @@
       "sources": [
         {
           "type": "archive",
-          "url": "https://gitlab.freedesktop.org/gstreamer/gst-plugins-bad/-/archive/1.18.5/gst-plugins-bad-1.18.5.tar.gz",
-          "sha256": "67c99a54dfc326bdcf2707973e5ad2c80c2e906406c5db7ec7dacbb252e739c6"
+          "url": "https://gitlab.freedesktop.org/gstreamer/gstreamer/-/archive/1.20.6/gstreamer-1.20.6.tar.gz",
+          "sha256": "1a2f50f336e96037ee0ecbf1f2785de3b2b64e4e84742edc8211d9a2e2ecdc4a"
         }
       ]
     },
@@ -90,8 +95,8 @@
       "sources": [
         {
           "type": "archive",
-          "url": "https://gitlab.gnome.org/World/decoder/uploads/49e5857b88a2fba7ebf55d606d97e2e2/decoder-0.3.2.tar.xz",
-          "sha256": "5a5d4b24193b3641f88750d144a35654bfb263f60c9d902ab34dc82ddd5c869b"
+          "url": "https://gitlab.gnome.org/World/decoder/uploads/d7fb26a0f4b57439fbcee3e92a0df795/decoder-0.3.3.tar.xz",
+          "sha256": "6bbda4900da7872baca849bad6c861de6df2416e14bc27e8cb3c0927d2a4960d"
         }
       ]
     }
