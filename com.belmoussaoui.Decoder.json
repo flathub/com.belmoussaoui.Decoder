@@ -1,7 +1,7 @@
 {
   "id": "com.belmoussaoui.Decoder",
   "runtime": "org.gnome.Platform",
-  "runtime-version": "46",
+  "runtime-version": "47",
   "sdk": "org.gnome.Sdk",
   "sdk-extensions" : [
     "org.freedesktop.Sdk.Extension.rust-stable"
@@ -79,8 +79,8 @@
       "sources": [
         {
           "type": "archive",
-          "url": "https://gitlab.freedesktop.org/gstreamer/gstreamer/-/archive/1.22.10/gstreamer-1.22.10.tar.gz",
-          "sha256": "bba3a87f82d509802d96a5caf2c47982234063928870623b222f60702f1f50eb"
+          "url": "https://gitlab.freedesktop.org/gstreamer/gstreamer/-/archive/1.24.8/gstreamer-1.24.8.tar.gz",
+          "sha256": "4c08cd1fb366f4d7a3db8554ba23e7e4720e1f4703cc95686bc9d1a118ef9e44"
         }
       ]
     },
@@ -88,10 +88,18 @@
       "name": "decoder",
       "buildsystem": "meson",
       "sources": [
+        "generated-sources.json",
         {
           "type": "archive",
-          "url": "https://gitlab.gnome.org/World/decoder/uploads/4b71b67351fdc5e5814b8d250d4392a2/decoder-0.5.1.tar.xz",
-          "sha256": "66b46865a19861e7c08aea5d8060e75dd80e673c8eabaf6eaa5c53655c4a30f4"
+          "url": "https://gitlab.gnome.org/World/decoder/-/archive/0.6.0/decoder-0.6.0.tar.gz",
+          "sha256": "167923f5f4c4d9a5ea463f66c58acb46c618264705e4b2036cfee1e8a805a761"
+        },
+        {
+          "type": "shell",
+          "commands": [
+            "mkdir .cargo",
+            "cp cargo/config .cargo/config"
+          ]
         }
       ]
     }
