@@ -88,18 +88,10 @@
       "name": "decoder",
       "buildsystem": "meson",
       "sources": [
-        "generated-sources.json",
         {
           "type": "archive",
-          "url": "https://gitlab.gnome.org/World/decoder/-/archive/0.6.0/decoder-0.6.0.tar.gz",
-          "sha256": "167923f5f4c4d9a5ea463f66c58acb46c618264705e4b2036cfee1e8a805a761"
-        },
-        {
-          "type": "shell",
-          "commands": [
-            "mkdir .cargo",
-            "cp cargo/config .cargo/config"
-          ]
+          "url": "https://gitlab.gnome.org/-/project/13930/uploads/2b625b1a61be027c07c4928bc947f92e/decoder-0.6.1.tar.xz",
+          "sha256": "de46297f9b4bf26018af754e9f922970cf15ed4194d09d949c37394d1a71004c"
         }
       ]
     }
