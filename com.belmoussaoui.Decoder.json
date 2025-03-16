@@ -1,7 +1,7 @@
 {
   "id": "com.belmoussaoui.Decoder",
   "runtime": "org.gnome.Platform",
-  "runtime-version": "47",
+  "runtime-version": "48",
   "sdk": "org.gnome.Sdk",
   "sdk-extensions" : [
     "org.freedesktop.Sdk.Extension.rust-stable"
@@ -29,69 +29,13 @@
   ],
   "modules": [
     {
-      "name": "zbar",
-      "config-opts": [
-        "--disable-doc",
-        "--disable-video",
-        "--enable-codes=qrcode",
-        "--without-dbus",
-        "--without-directshow",
-        "--without-gir",
-        "--without-graphicsmagick",
-        "--without-gtk",
-        "--without-imagemagick",
-        "--without-java",
-        "--without-jpeg",
-        "--without-npapi",
-        "--without-python",
-        "--without-qt",
-        "--without-qt5",
-        "--without-xshm",
-        "--without-xv"
-      ],
-      "sources": [
-        {
-          "type": "archive",
-          "url": "https://linuxtv.org/downloads/zbar/zbar-0.23.1.tar.gz",
-          "sha256": "c72b19eb63f48781ae5ff1830236f4e753f4bd6418cd781aea1cd85d625b119e"
-        },
-        {
-          "type": "script",
-          "dest-filename": "autogen.sh",
-          "commands": [
-            "autoreconf -vfi -W none"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "gst-bad-plugins",
-      "buildsystem": "meson",
-      "subdir": "subprojects/gst-plugins-bad",
-      "config-opts": [
-        "-Dzbar=enabled",
-        "-Drsvg=disabled",
-        "-Dvulkan=disabled",
-        "-Dexamples=disabled",
-        "-Dtests=disabled",
-        "-Dintrospection=disabled"
-      ],
-      "sources": [
-        {
-          "type": "archive",
-          "url": "https://gitlab.freedesktop.org/gstreamer/gstreamer/-/archive/1.24.8/gstreamer-1.24.8.tar.gz",
-          "sha256": "4c08cd1fb366f4d7a3db8554ba23e7e4720e1f4703cc95686bc9d1a118ef9e44"
-        }
-      ]
-    },
-    {
       "name": "decoder",
       "buildsystem": "meson",
       "sources": [
         {
           "type": "archive",
-          "url": "https://gitlab.gnome.org/-/project/13930/uploads/2b625b1a61be027c07c4928bc947f92e/decoder-0.6.1.tar.xz",
-          "sha256": "de46297f9b4bf26018af754e9f922970cf15ed4194d09d949c37394d1a71004c"
+          "url": "https://gitlab.gnome.org/-/project/13930/uploads/354e9b5d9764468361c3339d3ed67a63/decoder-0.7.0.tar.xz",
+          "sha256": "9948937c064bbe4a1d046a1f9cf747fc3252987e4fce95aa6d796b518d2291d3"
         }
       ]
     }
