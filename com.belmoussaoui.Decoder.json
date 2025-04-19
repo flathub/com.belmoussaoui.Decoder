@@ -34,8 +34,14 @@
       "sources": [
         {
           "type": "archive",
-          "url": "https://gitlab.gnome.org/-/project/13930/uploads/354e9b5d9764468361c3339d3ed67a63/decoder-0.7.0.tar.xz",
-          "sha256": "9948937c064bbe4a1d046a1f9cf747fc3252987e4fce95aa6d796b518d2291d3"
+          "url": "https://gitlab.gnome.org/World/decoder/-/releases/0.7.1/downloads/decoder-0.7.1.tar.xz",
+          "sha256": "2dcb3c42530bd3d246a3b490928afc326184b41649ec9a3e21889320727b69b4",
+          "x-checker-data": {
+            "type": "json",
+            "url": "https://gitlab.gnome.org/api/v4/projects/13930/releases/",
+            "version-query": ".[0].tag_name",
+            "url-query": ".[0].assets.links.[] | select(.name == \"decoder-\" + $version + \".tar.xz\") | .direct_asset_url"
+          }
         }
       ]
     }
