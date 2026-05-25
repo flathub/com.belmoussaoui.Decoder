@@ -23,8 +23,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://gitlab.gnome.org/World/decoder/-/releases/0.9.0/downloads/decoder-0.9.0.tar.xz",
-                    "sha256": "00efb066533e709e8624b28562be0e681150b1fe58dcd8fdce2afa0ca5a4e1ec",
+                    "url": "https://gitlab.gnome.org/World/decoder/-/releases/0.9.1/downloads/decoder-0.9.1.tar.xz",
+                    "sha256": "6773f56fec2a6e9275dcfabb6e41732173101bf785cdf1a797d768a723c0bb78",
                     "x-checker-data": {
                         "type": "json",
                         "url": "https://gitlab.gnome.org/api/v4/projects/13930/releases/",
