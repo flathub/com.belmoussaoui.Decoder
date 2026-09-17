@@ -1,7 +1,7 @@
 {
     "id": "com.belmoussaoui.Decoder",
     "runtime": "org.gnome.Platform",
-    "runtime-version": "50",
+    "runtime-version": "51",
     "sdk": "org.gnome.Sdk",
     "sdk-extensions": [
         "org.freedesktop.Sdk.Extension.rust-stable"
@@ -23,8 +23,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://gitlab.gnome.org/World/decoder/-/releases/0.9.1/downloads/decoder-0.9.1.tar.xz",
-                    "sha256": "6773f56fec2a6e9275dcfabb6e41732173101bf785cdf1a797d768a723c0bb78",
+                    "url": "https://gitlab.gnome.org/World/decoder/-/releases/0.10.0/downloads/decoder-0.10.0.tar.xz",
+                    "sha256": "0ab592e47ee206a0b87cd7fdbc6eafd87618b137d082f7a5975e416157591829",
                     "x-checker-data": {
                         "type": "json",
                         "url": "https://gitlab.gnome.org/api/v4/projects/13930/releases/",
